@@ -1,0 +1,289 @@
+/* LIGHT THEME */
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --navbar-bg: #f5f5f5;
+  --input-bg: white;
+  --button-bg: rgb(201, 201, 201);
+  --button-hover: rgb(160, 160, 160);
+  --weather1: #74ebd5;
+  --weather2: #9face6;
+}
+
+/* DARK THEME */
+body.dark {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --navbar-bg: #1e1e1e;
+  --input-bg: rgb(65, 65, 65);
+  --button-bg: rgb(41, 41, 41);
+  --button-hover: rgb(121, 121, 121);
+  --weather1: #0e2858;
+  --weather2: #3362b3;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.mainbody {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color , black);
+}
+
+.mainbody_bg {
+  width: 100vw;
+  height: 101vh;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+}
+
+.mainbody_title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-left: 30px;
+  color: var(--text-color , black);
+}
+
+.mainbody_cloud {
+  position: absolute;
+  top: 18px;
+  width: 320px;
+  height: 90px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mainbody_cloud:hover {
+  opacity: 0.8;
+}
+
+.mainbody_navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mainbody_navbar_left {
+  justify-content: flex-start;
+  flex: 0.2;
+}
+
+.mainbody_navbar_mid {
+  justify-content: center;
+  flex: 0.78;
+}
+
+.mainbody_navbar_right {
+  justify-content: flex-end;
+  flex: 0.02;
+}
+
+.mainbody_toggle {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.mainbody_body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mainbody_input {
+  width: 50vw;
+  height: 30px;
+  border-radius: 0px 999px 999px 0px;
+  border-left: none !important;
+  outline: none;
+  font-size: 20px;
+  background-color: var(--input-bg , white);
+  border: 1px solid var(--text-color , black);
+  color: var(--text-color , black);
+}
+
+.inputfiller {
+  border-radius: 9999px 0px 0px 9999px;
+  height: 32px;
+  width: 30px;
+  border: 1px solid var(--text-color , black);
+  border-right: none;
+  background-color: var(--input-bg , white);
+}
+
+.mainbody_search {
+  height: 34px;
+  border-radius: 0px 20px 20px 0px;
+  width: 50px;
+  border-left: none;
+  background-color: var(--button-bg);
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mainbody_search:hover {
+  background-color: var(--button-hover);
+}
+
+.dropdown {
+  width: 50vw;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: var(--input-bg , white);
+  border: 1px solid var(--text-color );
+  border-radius: 0 0 10px 10px;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Custom scrollbar for dropdown */
+.dropdown::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--text-color) !important;
+}
+
+.dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  background-color: var(--button-bg);
+  border-radius: 10px;
+}
+
+.dropdown::-webkit-scrollbar-thumb:hover {
+  background-color: var(--button-hover);
+}
+
+/* Firefox slim scrollbar */
+.dropdown {
+  scrollbar-width: thin;
+  scrollbar-color: var(--button-bg) transparent;
+}
+
+.dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.dropdown li:hover {
+  background-color: var(--button-hover);
+}
+
+.dropdown img {
+  border-radius: 3px;
+}
+
+.mainbody_inputarea {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainbody_map_weather {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mainbody_map {
+  flex: 0.65;
+  width: 50vw;
+  height: 60vh;
+  margin-top: 40px;
+  margin-left: 40px;
+   min-height: 250px
+}
+
+.container_weather {
+  flex: 0.35;
+}
+
+/* ---------------- */
+/* RESPONSIVE RULES */
+/* ---------------- */
+@media (max-width: 768px) {
+  .mainbody_title {
+    font-size: 28px;
+    margin-left: 15px;
+  }
+
+  .mainbody_cloud {
+    width: 200px;
+    height: 60px;
+    top: 10px;
+  }
+
+  .mainbody_input {
+    width: 85vw;
+    font-size: 16px;
+  }
+
+  .dropdown {
+    width: 85vw;
+  }
+
+   .mainbody_map_weather {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mainbody_map {
+    width: 90vw;
+    height: 40vh;
+    margin: 20px 0;
+  }
+
+  .container_weather {
+    width: 90vw;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainbody_title {
+    font-size: 22px;
+  }
+
+  .mainbody_input {
+    font-size: 14px;
+    height: 28px;
+  }
+
+  .inputfiller {
+    height: 28px;
+  }
+
+  .mainbody_map {
+    height: 35vh;
+  }
+
+  .weather {
+    width: 90vw !important; /* override the fixed 350px */
+  }
+}
