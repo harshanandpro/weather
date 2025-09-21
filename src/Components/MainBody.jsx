@@ -11,7 +11,6 @@ import "leaflet/dist/leaflet.css";
 import Weather from './Weather'
 
 const API_KEY = "0abe1d6c06b887e51fbd28fcf39cfaaa";
-
 const MainBody = () => {
   const [theme, setTheme] = useState("light");
 const [countries, setCountries] = useState([]);
@@ -33,6 +32,7 @@ function FixMapResize() {
 }
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
+   
     setTheme(newTheme);
     document.body.className = newTheme;   
   };
@@ -49,7 +49,7 @@ function FixMapResize() {
   };
   fetchCountries();
 }, []);
-  
+   const murl = theme === "dark" ? "https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=CbYebNl5DnTcXtWqBX4VYwojWku8TH8PcR6mJ0kuNRjsUdwvHjxchRWku7yrFiUh" : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     const bg = theme === "light" ? light : dark;
   function RecenterMap({ coords }) {
   const map = useMap();
@@ -154,7 +154,7 @@ function LocationMarker({ onSelect }) {
                     className='mainbody_map'
                   >
                     <TileLayer
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      url={murl}
                       attribution="&copy; OpenStreetMap contributors"
                     />
                     <Marker position={coords}>
